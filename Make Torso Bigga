@@ -1,0 +1,10 @@
+local player = game.Players.LocalPlayer
+local character = player.Character
+local torso = character.Torso
+local scale = 2
+
+game:GetService("UserInputService").InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.Q then
+        torso.Size = torso.Size * scale
+    end
+end)
