@@ -1,0 +1,60 @@
+-- Create the GUI
+local speedGUI = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local textBox = Instance.new("TextBox")
+local increaseButton = Instance.new("TextButton")
+local decreaseButton = Instance.new("TextButton")
+
+speedGUI.Name = "WalkSpeed GUI"
+speedGUI.Parent = game.CoreGui
+
+frame.Name = "Frame"
+frame.Parent = speedGUI
+frame.Active = true
+frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame.Position = UDim2.new(0.1, 0, 0.1, 0)
+frame.Size = UDim2.new(0, 200, 0, 100)
+
+textBox.Name = "SpeedDisplay"
+textBox.Parent = frame
+textBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textBox.Position = UDim2.new(0.05, 0, 0.1, 0)
+textBox.Size = UDim2.new(0.9, 0, 0.3, 0)
+textBox.Font = Enum.Font.SourceSans
+textBox.Text = "Current Walk Speed: "
+textBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+textBox.TextSize = 14
+textBox.TextWrapped = true
+
+increaseButton.Name = "IncreaseButton"
+increaseButton.Parent = frame
+increaseButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+increaseButton.Position = UDim2.new(0.05, 0, 0.5, 0)
+increaseButton.Size = UDim2.new(0.4, 0, 0.3, 0)
+increaseButton.Font = Enum.Font.SourceSans
+increaseButton.Text = "Increase Walk Speed"
+increaseButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+increaseButton.TextSize = 14
+
+decreaseButton.Name = "DecreaseButton"
+decreaseButton.Parent = frame
+decreaseButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+decreaseButton.Position = UDim2.new(0.55, 0, 0.5, 0)
+decreaseButton.Size = UDim2.new(0.4, 0, 0.3, 0)
+decreaseButton.Font = Enum.Font.SourceSans
+decreaseButton.Text = "Decrease Walk Speed"
+decreaseButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+decreaseButton.TextSize = 14
+
+local player = game.Players.LocalPlayer
+local humanoid = player.Character:WaitForChild("Humanoid")
+
+increaseButton.MouseButton1Click:Connect(function()
+    humanoid.WalkSpeed = humanoid.WalkSpeed + 10
+    textBox.Text = "Current Walk Speed: " .. humanoid.WalkSpeed
+end)
+
+decreaseButton.MouseButton1Click:Connect(function()
+    humanoid.WalkSpeed = humanoid.WalkSpeed - 10
+    textBox.Text = "Current Walk Speed: " .. humanoid.WalkSpeed
+end)
