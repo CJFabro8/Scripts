@@ -1,0 +1,21 @@
+--ESP Script--
+
+while wait(1) do
+	local players = game.Players:GetPlayers()
+	
+	for i, player in ipairs(players) do
+		if player.Character then
+			local charRoot = player.Character:FindFirstChild("HumanoidRootPart")
+			if charRoot then
+				local espBox = Instance.new("BoxHandleAdornment")
+				espBox.Adornee = charRoot
+				espBox.Size = Vector3.new(2, 3, 2)
+				espBox.Color3 = Color3.new(1, 0, 0)
+				espBox.Name = "ESP"
+				espBox.AlwaysOnTop = true
+				espBox.ZIndex = 10
+				espBox.Parent = charRoot
+			end
+		end
+	end
+end
